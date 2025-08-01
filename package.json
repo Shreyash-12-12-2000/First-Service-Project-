@@ -1,0 +1,12 @@
+{
+  "name": "umbreladesk-project-files",
+  "version": "1.0.0",
+  "main": "index.js",
+ "scripts": {
+  "dev": "concurrently \"npm run dev --prefix \\\"./umbreladesk admin\\\"\" \"npm run dev --prefix \\\"./umbreladesk Project\\\"\" \"npm run dev --prefix \\\"./umbreladesk server\\\"\""
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
