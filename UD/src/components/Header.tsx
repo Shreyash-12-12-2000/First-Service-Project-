@@ -33,7 +33,7 @@ const Header = () => {
               <span className="text-accent-foreground font-bold text-lg">B</span>
             </div>
             <span className="text-xl font-bold text-primary">BusinessPro</span> */}
-            <img src="/logo3.png" alt="BusinessPro Logo" className="w-[15rem]" />
+           <img src="logo3.png" alt="BusinessPro Logo" className="w-[15rem]" />
           </Link>
 
           {/* Desktop Navigation */}
