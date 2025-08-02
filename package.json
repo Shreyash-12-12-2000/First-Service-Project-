@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
  "scripts": {
-  "dev": "concurrently \"npm run dev --prefix \\\"./umbreladesk admin\\\"\" \"npm run dev --prefix \\\"./umbreladesk Project\\\"\" \"npm run dev --prefix \\\"./umbreladesk server\\\"\""
+  "dev": "concurrently \"npm run dev --prefix \\\"./UD admin\\\"\" \"npm run dev --prefix \\\"./UD\\\"\" \"npm run dev --prefix \\\"./UD server\\\"\""
 },
   "keywords": [],
   "author": "",
