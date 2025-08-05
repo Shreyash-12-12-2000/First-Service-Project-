@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ServiceCard from "@/components/ServiceCard";
 import TestimonialSlider from "@/components/TestimonialSlider";
+import PartnerLogosSlider from "@/components/PartnerLogosSlider";
 import { servicesData } from "@/data/servicesData";
 
 const Home = () => {
@@ -57,7 +58,7 @@ const testimonials = [
   },
   {
     id: 4,
-    name: "Nhikhil Tete",
+    name: "Nikhil Tete",
     designation: "Product Manager, Pocketvender",
     feedback:
       "From UX to deployment, the team delivered a sleek and scalable SaaS product right on schedule.",
@@ -93,6 +94,14 @@ const testimonials = [
   },
 ];
 
+const partnerLogos = [
+  "Arpn logo.png",
+  "Grohere logo.png",
+  "IBCNpng.png",
+  "pocket vendr logo 2.png",
+];
+
+
 
   return (
     <div className="min-h-screen">
@@ -109,23 +118,27 @@ const testimonials = [
     <source src="bg7.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
-        <div
-    className="absolute inset-0"
+  
+ <div style={{ overflowX: 'hidden' }}>
+  <div
     style={{
-      width: '600px',
-      height: '600px',
-      backgroundImage: 'url("UmbrellAdesk 3.png")',
+      position: 'absolute',      // Required
+      left: '50%',
+      top: '60px',
+      transform: 'translateX(-41%)', // Slightly to the right of center
+      width: '90vw',
+      maxWidth: '600px',
+      aspectRatio: '1',
+      backgroundImage: 'url(\"UmbrellAdesk 3.png\")',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       opacity: 0.2,
       pointerEvents: 'none',
       zIndex: 0,
-      marginLeft: 500,
-      marginTop: 100,
     }}
   />
-       
+</div> 
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -265,6 +278,15 @@ const testimonials = [
         </h2>
         <TestimonialSlider testimonials={testimonials} />
       </section>
+
+      {/* Partners Logos Section */}
+      <section id="partners" className="bg-[#ffff] py-16">
+        <h2 className="text-3xl font-bold text-center text-[#14213d] mb-10">
+          Our Trusted Partners
+        </h2>
+        <PartnerLogosSlider logos={partnerLogos} speed={50} />
+      </section>
+
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground">

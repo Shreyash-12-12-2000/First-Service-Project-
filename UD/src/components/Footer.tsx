@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from 'lucide-react'
+import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook  } from 'lucide-react'
+import { FaWhatsapp } from 'react-icons/fa';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -12,7 +13,7 @@ const Footer = () => {
       { name: 'Contact', path: '/contact' },
     ],
     services: [
-      { name: 'IT Services', path: '/services/it-services'},
+      { name: 'Software Services', path: '/services/software-services'},
       { name: 'Digital Marketing', path: '/services/digital-marketing' },
       { name: 'HR & Recruitment', path: '/services/hr-recruitment' },
       { name: 'Customer Support', path: '/services/customer-support' },
@@ -42,6 +43,15 @@ const Footer = () => {
               <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center hover:bg-accent transition-colors cursor-pointer">
                 <Facebook className="w-4 h-4" />
               </div>
+             <a
+               href="https://wa.me/7566026037?text=Hello%2C%20I%27m%20interested%20in%20your%20services"
+               target="_blank"
+               rel="noopener noreferrer"
+                >
+             <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center hover:bg-accent transition-colors cursor-pointer">
+             <FaWhatsapp className="w-4 h-4" />
+             </div>
+              </a>
             </div>
           </div>
 

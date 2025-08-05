@@ -1,4 +1,4 @@
-import { Monitor, Megaphone, Users, Headphones, BarChart3, TrendingUp } from 'lucide-react'
+import { Monitor, Megaphone, Users, Headphones, BarChart3, FileText } from 'lucide-react'
 import { LucideIcon } from 'lucide-react'
 
 export interface ServiceData {
@@ -27,58 +27,59 @@ export interface ServiceData {
 }
 
 export const servicesData: ServiceData[] = [
-  {
-    id: '1',
-    slug: 'it-services',
-    title: 'IT Services',
-    description: 'Comprehensive technology solutions designed to modernize your infrastructure and enhance operational efficiency.',
-    features: [
-      'Cloud Infrastructure Management',
-      'Cybersecurity & Data Protection',
-      'Custom Software Development',
-      'System Integration & Migration',
-      '24/7 Technical Support',
-      'Disaster Recovery Planning'
-    ],
-    icon: Monitor,
-    extendedDescription: 'Our IT Services division provides comprehensive technology solutions that modernize your infrastructure and enhance operational efficiency. We specialize in cloud migration, cybersecurity implementation, and custom software development to help businesses stay competitive in the digital age.',
-    benefits: [
-      'Reduced operational costs by up to 40%',
-      'Enhanced security and data protection',
-      'Improved system reliability and uptime',
-      'Scalable solutions that grow with your business',
-      'Expert 24/7 technical support',
-      'Compliance with industry standards'
-    ],
-    process: [
-      {
-        title: 'Infrastructure Assessment',
-        description: 'Comprehensive evaluation of your current IT infrastructure and identification of optimization opportunities.'
-      },
-      {
-        title: 'Solution Design',
-        description: 'Custom technology roadmap development aligned with your business objectives and growth plans.'
-      },
-      {
-        title: 'Implementation & Migration',
-        description: 'Seamless deployment of new systems with minimal disruption to your daily operations.'
-      },
-      {
-        title: 'Ongoing Support',
-        description: 'Continuous monitoring, maintenance, and support to ensure optimal performance.'
-      }
-    ],
-    caseStudy: {
-      title: 'Manufacturing Company Digital Transformation',
-      description: 'Helped a mid-size manufacturing company migrate to cloud infrastructure and implement IoT solutions.',
-      results: [
-        '45% reduction in IT operational costs',
-        '99.9% system uptime achievement',
-        '60% faster data processing and reporting',
-        'Improved compliance with industry regulations'
-      ]
+ {
+  id: '1',
+  slug: 'software-services',
+  title: 'Software Services',
+  description: 'Tailored software solutions designed to accelerate digital transformation, improve system performance, and streamline business operations.',
+  features: [
+  'Custom Software Development',
+  'Cloud-Native Application Development',   
+  'Enterprise System Integration',
+  'Full-Stack Development (MERN & More)',   
+  'Application Modernization',
+  'Scalable API Development'
+],
+icon: Monitor,
+  extendedDescription: 'Our Software Services team delivers end-to-end software development and modernization solutions that empower businesses to innovate rapidly and operate efficiently. We focus on building secure, scalable, and future-ready systems using the latest technologies and development practices.',
+  benefits: [
+    'Accelerated time-to-market for digital products',
+    'Reduced technical debt and legacy maintenance costs',
+    'Improved scalability and performance of core applications',
+    'Seamless integration with third-party platforms and tools',
+    'Robust security baked into the development lifecycle',
+    '24/7 application monitoring and support services'
+  ],
+  process: [
+    {
+      title: 'Requirements Discovery',
+      description: 'Collaborative workshops to identify business goals, user needs, and technical requirements for software development.'
+    },
+    {
+      title: 'Solution Architecture',
+      description: 'Design of scalable, maintainable, and secure software systems tailored to your organization’s specific needs.'
+    },
+    {
+      title: 'Agile Development & Testing',
+      description: 'Iterative development using modern frameworks, continuous integration, and automated testing for faster delivery.'
+    },
+    {
+      title: 'Deployment & Support',
+      description: 'Managed deployment pipelines, monitoring, and ongoing support to ensure system stability and business continuity.'
     }
-  },
+  ],
+  caseStudy: {
+    title: 'Logistics Platform Rebuild for Supply Chain Optimization',
+    description: 'Redeveloped a logistics tracking platform for a national supply chain company, integrating real-time data and automating key workflows.',
+    results: [
+      '50% reduction in manual operations through automation',
+      'Improved delivery accuracy with real-time updates',
+      '2x faster system performance under load',
+      'Streamlined integration with partners via APIs'
+    ]
+  }
+},
+
   {
     id: '2',
     slug: 'digital-marketing',
@@ -287,8 +288,66 @@ export const servicesData: ServiceData[] = [
   ]
     }
   },
+{
+  id: '6',
+  slug: 'financial-advisor-services',
+  title: 'Financial Advisor Services',
+  description: 'Financial Advisor Services offer expert assistance and end-to-end support in managing personal and business finance-related tasks, legal registrations, and compliance activities.',
+  features: [
+    'GST Registration & Return Filing',
+    'Income Tax Return (ITR) Filing',
+    'Accounting & Auditing Services',
+    'PAN Card Services',
+    'UDYAM Registration',
+    'Rent Agreement Drafting & Registration',
+    'Shop Act License Registration',
+    'Food License (FSSAI)',
+    'Driving License Assistance'
+  ],
+  icon: FileText, // (You can replace with a relevant icon)
+  extendedDescription: 'Our Financial Advisor Services provide individuals and small businesses with professional support for financial management, regulatory compliance, and essential government documentation. From tax filings to business registrations, we ensure everything is handled accurately and on time.',
+  benefits: [
+    'Compliance Made Easy – Stay aligned with tax and legal requirements.',
+    'Time-Saving – Let experts handle documentation and filings.',
+    'Error-Free Submissions – Minimize risks of penalties and delays.',
+    'Affordable & Transparent Pricing – No hidden charges or surprises.',
+    'One-Stop Solution – All financial and registration services under one roof.',
+    'Peace of Mind – Reliable and verified support for your needs.'
+  ],
+  process: [
+    {
+      title: 'Consultation & Requirement Gathering',
+      description: 'Understand your needs, documents required, and applicable services.'
+    },
+    {
+      title: 'Document Collection & Verification',
+      description: 'Collect and verify the necessary documents for submission.'
+    },
+    {
+      title: 'Application Filing',
+      description: 'File applications with the relevant government or legal authority.'
+    },
+    {
+      title: 'Status Tracking & Support',
+      description: 'Track progress and provide updates until completion.'
+    }
+  ],
+  caseStudy: {
+    title: 'Full-Service Compliance Support for a Startup',
+    description: 'Assisted a growing startup with complete financial and regulatory documentation setup.',
+    results: [
+      'Completed GST, PAN, UDYAM, and Shop License in 10 business days',
+      '100% accurate ITR filing for the first financial year',
+      'Saved over 80 hours of manual effort for the founder',
+      'Helped secure FSSAI and Rent Agreement for office within a week'
+    ]
+  }
+}
+
  
 ]
+ 
+
 
 export const getServiceBySlug = (slug: string): ServiceData | undefined => {
   return servicesData.find(service => service.slug === slug)
