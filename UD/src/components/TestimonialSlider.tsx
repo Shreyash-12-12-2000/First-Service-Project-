@@ -21,15 +21,38 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
   autoPlayInterval = 6000,
 }) => {
   const [index, setIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(3);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const visibleCount = 3;
-  const length = testimonials.length;
+  const length: number = testimonials.length;
 
-  const getVisibleIndexes = (currentIndex: number) => {
+  // Dynamically adjust visible testimonial count based on screen size
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      if (window.innerWidth < 768) {
+        setVisibleCount(1);
+      } else {
+        setVisibleCount(3);
+      }
+    };
+
+    updateVisibleCount();
+    window.addEventListener("resize", updateVisibleCount);
+
+    return () => window.removeEventListener("resize", updateVisibleCount);
+  }, []);
+
+  const getVisibleIndexes = (currentIndex: number): number[] => {
+    if (length === 0) return [];
+
+    if (visibleCount === 1) {
+      return [currentIndex];
+    }
+
     const left = (currentIndex - 1 + length) % length;
     const center = currentIndex;
     const right = (currentIndex + 1) % length;
+
     return [left, center, right];
   };
 
@@ -42,12 +65,16 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
   }, [index, autoPlayInterval]);
 
   const visibleIndexes = getVisibleIndexes(index);
+  const isMobile = visibleCount === 1;
 
   return (
-    <section className="relative w-full max-w-6xl mx-auto px-12 py-20">
-      <div className="flex justify-center items-center gap-4 relative">
-        {visibleIndexes.map((i, position) => {
+    <section className="relative w-full max-w-6xl mx-auto px-4 sm:px-12 py-12 sm:py-20">
+      <div className="flex justify-center items-center gap-4 relative flex-wrap sm:flex-nowrap">
+        {visibleIndexes.map((i) => {
+          if (isMobile && i !== index) return null;
+
           const isCenter = i === index;
+
           return (
             <motion.div
               key={testimonials[i].id}
@@ -59,9 +86,7 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
               transition={{ duration: 0.7, ease: "easeInOut" }}
               className="w-full max-w-sm"
             >
-              <Card
-                className={`rounded-2xl shadow-lg transition-all bg-white text-[#14213d] p-6 flex flex-col items-center text-center`}
-              >
+              <Card className="rounded-2xl shadow-lg transition-all bg-white text-[#14213d] p-6 flex flex-col items-center text-center">
                 <img
                   src={testimonials[i].image}
                   alt={testimonials[i].name}
@@ -85,7 +110,7 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
       </div>
 
       {/* Arrows */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-4">
+      <div className="absolute w-full flex justify-between items-center top-full mt-4 px-8 sm:px-4 sm:top-1/2 sm:-translate-y-1/2 sm:mt-0">
         <button
           onClick={prev}
           className="bg-[#000000] text-white p-2 rounded-full hover:bg-[#fca311] transition"
@@ -93,8 +118,6 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
         >
           <ChevronLeft size={20} />
         </button>
-      </div>
-      <div className="absolute top-1/2 -translate-y-1/2 right-4">
         <button
           onClick={next}
           className="bg-[#000000] text-white p-2 rounded-full hover:bg-[#fca311] transition"
