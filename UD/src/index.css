@@ -140,14 +140,18 @@ All colors MUST be HSL.
     box-shadow: 0 20px 25px -5px hsl(var(--accent) / 0.15), 0 10px 10px -5px hsl(var(--accent) / 0.1);
   }
 }
-
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee {
-  display: inline-flex;
-  animation: marquee linear infinite;
-  animation-duration: var(--marquee-duration);
+  animation: marquee var(--marquee-duration, 20s) linear infinite;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
 }
