@@ -99,12 +99,16 @@ const partnerLogos = [
   "Grohere logo.png",
   "IBCNpng.png",
   "pocket vendr logo 2.png",
+  "Arpn logo.png",
+  "Grohere logo.png",
+  "IBCNpng.png",
+  "pocket vendr logo 2.png",
 ];
 
 
 
   return (
-    <div className="min-h-screen">
+   <div className="min-h-screen overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-secondary/20 to-accent/10 pt-16">
       <video
@@ -113,19 +117,19 @@ const partnerLogos = [
   loop
   playsInline
   preload="auto"
-  className="absolute inset-0 w-full h-full object-cover opacity-10 z-0 pointer-events-none"
+  className="absolute inset-0 w-full h-full object-cover opacity-10 -z-10 pointer-events-none"
 >
     <source src="bg7.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
   
- <div style={{ overflowX: 'hidden' }}>
+ {/* <div style={{ overflowX: 'hidden' }}>
   <div
     style={{
-      position: 'absolute',      // Required
-      left: '50%',
-      top: '60px',
-      transform: 'translateX(-41%)', // Slightly to the right of center
+      position: 'absolute',// Required
+      left: '47%',
+      top: '10px',
+      transform: 'translateX(-41%)',// Slightly to the right of center
       width: '90vw',
       maxWidth: '600px',
       aspectRatio: '1',
@@ -133,12 +137,12 @@ const partnerLogos = [
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
-      opacity: 0.2,
+      opacity: 0.3,
       pointerEvents: 'none',
-      zIndex: 0,
+      zIndex: -1,
     }}
   />
-</div> 
+</div>  */}
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -170,7 +174,7 @@ const partnerLogos = [
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-primary text-primary-foreground bg-primary hover:bg-primary hover:text-primary-foreground "
+                className="border-primary text-primary-foreground bg-primary hover:bg-primary/90 hover:text-primary-foreground "
               > 
                 <Link to="/contact">Get Free Consultation</Link>
               </Button>
@@ -289,7 +293,7 @@ const partnerLogos = [
 
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground">
+      <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -317,7 +321,7 @@ const partnerLogos = [
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-primary-foreground text-accent-foreground hover:bg-primary-foreground hover:text-accent"
+                className="border-primary-foreground text-muted hover:bg-primary-foreground hover:text-primary"
               >
                 <Link to="/about">Learn More</Link>
               </Button>

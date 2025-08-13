@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { X, MoreVertical, Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 
@@ -19,22 +19,25 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path
 
   return (
-    <motion.header 
+    
+    <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-     className="fixed top-0 w-full bg-white/65 backdrop-blur-sm border-b border-border z-50"
-
+      className="fixed top-0 w-full bg-white/65 backdrop-blur-sm border-b border-border z-50"
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-30">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            {/* <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-              <span className="text-accent-foreground font-bold text-lg">B</span>
-            </div>
-            <span className="text-xl font-bold text-primary">BusinessPro</span> */}
-           <img src="logo3.png" alt="BusinessPro Logo" className="w-[15rem]" />
-          </Link>
+      <div className="container mx-auto px-4 py-1">
+        <div className="relative w-full flex items-center justify-between h-20">
+          {/* Logo - centered on mobile */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 md:static md:translate-x-0">
+            <Link to="/" className="flex items-center space-x-2">
+            <img
+             src="logo.png"
+             alt="BusinessPro Logo"
+             className="max-w-[16rem] h-auto md:max-w-[17rem]"
+            />
+
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -43,8 +46,8 @@ const Header = () => {
                 key={item.name}
                 to={item.path}
                 className={`text-sm font-medium transition-colors hover:text-accent ${
-                  isActive(item.path) 
-                    ? 'text-primary border-b-2 border-accent pb-1' 
+                  isActive(item.path)
+                    ? 'text-primary border-b-2 border-accent pb-1'
                     : 'text-muted-foreground'
                 }`}
               >
@@ -53,17 +56,17 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
+          {/* CTA Button (Desktop) */}
           <div className="hidden md:flex">
             <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
               <Link to="/contact">Get Started</Link>
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button (right side) */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2"
+            className="md:hidden"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -75,7 +78,7 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden pb-4"
+            className="md:hidden pb-2"
           >
             <nav className="flex flex-col space-y-4">
               {navItems.map((item) => (

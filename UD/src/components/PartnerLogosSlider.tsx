@@ -2,43 +2,35 @@ import React, { useEffect, useRef } from "react";
 
 interface PartnerLogosSliderProps {
   logos: string[];
-  speed?: number; // pixels per second
+  speed?: number;
 }
 
 const PartnerLogosSlider: React.FC<PartnerLogosSliderProps> = ({
   logos,
   speed = 50,
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const marqueeRef = useRef<HTMLDivElement>(null);
   const duplicated = [...logos, ...logos];
 
   useEffect(() => {
-    const el = ref.current;
+    const el = marqueeRef.current;
     if (!el) return;
     const totalWidth = el.scrollWidth / 2;
     const duration = totalWidth / speed;
-    el.style.setProperty("--marquee-duration", `${duration}s`);
+    el.style.setProperty("--marquee-duration", `10s`);
   }, [logos, speed]);
 
   return (
-    <div className="overflow-hidden w-full">
-      <div
-        ref={ref}
-        className="animate-marquee whitespace-nowrap"
-        style={{ "--marquee-duration": "20s" } as React.CSSProperties}
-      >
-        {duplicated.map((logo, i) => (
-          <span
-            key={i}
-            className="inline-block mx-6 align-middle"
-            style={{ width: "150px" }}
-          >
+    <div className="relative overflow-hidden w-full py-4">
+      <div ref={marqueeRef} className="animate-marquee gap-8">
+        {duplicated.map((logo, index) => (
+          <div key={index} className="flex-shrink-0 w-36 sm:w-48">
             <img
               src={logo}
-              alt={`Partner ${i + 1}`}
-              className="h-25 w-auto object-contain"
+              alt={`Partner ${index + 1}`}
+              className="h-15 w-full object-contain"
             />
-          </span>
+          </div>
         ))}
       </div>
     </div>

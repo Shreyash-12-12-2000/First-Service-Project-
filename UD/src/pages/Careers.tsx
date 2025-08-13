@@ -67,22 +67,20 @@ const Careers = () => {
 
   return (
     <div className="min-h-screen pt-16">
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-background via-secondary/20 to-accent/10">
-             <div
-    className="absolute inset-0"
+  
+      <section className="py-20 bg-gradient-to-br from-background via-secondary/20 to-accent/10 relative overflow-hidden">
+
+      <div
+    className="absolute left-0 right-0 top-0 pointer-events-none"
     style={{
-      width: '600px',
-      height: '600px',
-      backgroundImage: 'url("UmbrellAdesk 3.png")',
-      backgroundPosition: 'center',
+      top:28,
+      height: '400px',  // Set height as you want
+      backgroundImage: 'url("bg.jpg")',
       backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center center',
       backgroundSize: 'cover',
-      opacity: 0.1,
-      pointerEvents: 'none',
+      opacity:0.2,
       zIndex: 0,
-      marginLeft: 500,
-      marginTop:50,
     }}
   />
         <div className="container mx-auto px-4">
@@ -183,7 +181,7 @@ const Careers = () => {
       </section>
 
       {/* Open Positions */}
-       <section id="positions" className="py-20 bg-secondary/30">
+       <section id="positions" className="py-20 bg-muted text-primary-foreground">
       <div className="container mx-auto px-4">
         {/* Heading */}
         <motion.div
@@ -295,7 +293,7 @@ const Careers = () => {
     </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground">
+      <section className="py-20 bg-muted text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -304,10 +302,10 @@ const Careers = () => {
             transition={{ duration: 0.8 }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
               Don't See the Right Position?
             </h2>
-            <p className="text-lg text-primary-foreground/90 mb-8">
+            <p className="text-lg text-muted-foreground mb-8">
               We're always looking for talented individuals to join our team.
               Send us your resume and let us know how you'd like to contribute
               to our mission.

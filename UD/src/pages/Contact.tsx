@@ -160,7 +160,6 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen pt-16">
-      {/* Hero Section */}
       <ToastContainer
         theme="dark"
         style={{ zIndex: 999999 }}
@@ -173,21 +172,19 @@ const Contact = () => {
         pauseOnFocusLoss
         pauseOnHover
       />
-      <section className="py-20 bg-gradient-to-br from-background via-secondary/20 to-accent/10">
-             <div
-    className="absolute inset-0"
+      <section className="py-20 bg-gradient-to-br from-background via-secondary/20 to-accent/10 relative overflow-hidden">
+
+      <div
+    className="absolute left-0 right-0 top-0 pointer-events-none"
     style={{
-      width: '600px',
-      height: '600px',
-      backgroundImage: 'url("UmbrellAdesk 3.png")',
-      backgroundPosition: 'center',
+      top:28,
+      height: '400px',  // Set height as you want
+      backgroundImage: 'url("bg.jpg")',
       backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center center',
       backgroundSize: 'cover',
-      opacity: 0.1,
-      pointerEvents: 'none',
+      opacity:0.2,
       zIndex: 0,
-      marginLeft: 500,
-      marginTop:50,
     }}
   />
         <div className="container mx-auto px-4">
@@ -250,7 +247,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form & Map */}
-      <section className="py-20 bg-secondary/30">
+      <section className="py-20 bg-primary">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="space-y-6">
@@ -436,7 +433,7 @@ const Contact = () => {
               className="space-y-8"
             >
               <div>
-                <h3 className="text-2xl font-bold text-primary mb-6">
+                <h3 className="text-2xl font-bold text-accent mb-6">
                   Our Offices
                 </h3>
                 <div className="space-y-6">

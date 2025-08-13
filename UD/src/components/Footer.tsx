@@ -25,16 +25,17 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <img src="logo4.png" alt="BusinessPro Logo" className="w-[17rem]" />
-            </div>
-            <p className="text-primary-foreground/80 text-sm">
-              Leading provider of professional business services, delivering innovative solutions 
-              to help your business grow and succeed in today's competitive market.
-            </p>
+         <div className="space-y-4 text-center items-center flex flex-col sm:items-start sm:text-left">
+  <div className="flex justify-center sm:justify-start">
+    <img src="logo4.png" alt="BusinessPro Logo" className="w-[17rem]" />
+  </div>
+  <p className="text-primary-foreground/80 text-sm max-w-md">
+    Leading provider of professional business services, delivering innovative solutions 
+    to help your business grow and succeed in today's competitive market.
+  </p>
+
             <div className="flex space-x-4">
-              <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center hover:bg-accent transition-colors cursor-pointer">
+              <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center hover:bg-accent  transition-colors cursor-pointer">
                 <Linkedin className="w-4 h-4" />
               </div>
               <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center hover:bg-accent transition-colors cursor-pointer">

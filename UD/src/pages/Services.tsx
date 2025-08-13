@@ -18,22 +18,20 @@ const Services = () => {
 
   return (
     <div className="min-h-screen pt-16">
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-background via-secondary/20 to-accent/10">
-             <div
-    className="absolute inset-0"
+    
+      <section className="py-20 bg-gradient-to-br from-background via-secondary/20 to-accent/10 relative overflow-hidden">
+
+      <div
+    className="absolute left-0 right-0 top-0 pointer-events-none"
     style={{
-      width: '600px',
-      height: '600px',
-      backgroundImage: 'url("UmbrellAdesk 3.png")',
-      backgroundPosition: 'center',
+      top:28,
+      height: '400px',  // Set height as you want
+      backgroundImage: 'url("bg.jpg")',
       backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center center',
       backgroundSize: 'cover',
-      opacity: 0.1,
-      pointerEvents: 'none',
+      opacity:0.2,
       zIndex: 0,
-      marginLeft: 500,
-      marginTop:50,
     }}
   />
         <div className="container mx-auto px-4">
@@ -86,7 +84,7 @@ const Services = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-secondary/30">
+      <section className="py-20 bg-primary">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -95,10 +93,10 @@ const Services = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-accent mb-6">
                 Why Choose Umbrelladesk?
               </h2>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-primary-foreground/70 mb-8">
                 We understand that every business is unique. That's why we take a personalized 
                 approach to every project, ensuring our solutions align perfectly with your 
                 goals and objectives.
@@ -114,7 +112,7 @@ const Services = () => {
                     className="flex items-start space-x-3"
                   >
                     <CheckCircle className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">{benefit}</span>
+                    <span className="text-primary-foreground/70">{benefit}</span>
                   </motion.div>
                 ))}
               </div>
@@ -125,12 +123,12 @@ const Services = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8"
+              className="bg-gradient-to-br from-muted/5 to-accent-foreground/5 rounded-2xl p-8"
             >
-              <h3 className="text-2xl font-bold text-primary mb-6">
+              <h3 className="text-2xl font-bold text-accent mb-6">
                 Ready to Get Started?
               </h3>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-primary-foreground/70 mb-6">
                 Let's discuss how our services can help transform your business. 
                 Schedule a free consultation with our experts today.
               </p>
@@ -138,7 +136,7 @@ const Services = () => {
                 <Button asChild className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
                   <Link to="/contact">Schedule Free Consultation</Link>
                 </Button>
-                <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                <Button asChild variant="outline" className="w-full border-muted text-muted hover:bg-muted bg-transparent hover:text-primary">
                   <Link to="/about">Learn More About Us</Link>
                 </Button>
               </div>
