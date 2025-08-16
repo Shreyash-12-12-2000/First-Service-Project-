@@ -21,7 +21,8 @@ app.use(cors({
     const allowedOrigins = [
       "http://localhost:5173",
       "http://localhost:8080",
-      "https://umbrelladesk.netlify.app" // 👈 Add 
+      "https://umbrelladesk.netlify.app", // 👈 Add
+      "https://udadmin.netlify.app", // 👈 Add
     ];
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
