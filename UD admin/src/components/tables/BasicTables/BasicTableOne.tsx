@@ -37,7 +37,11 @@ const handleDelete = async (id: string) => {
   if (!confirmDelete) return;
 
   try {
-    const res = await fetch(`http://localhost:3000/api/contact/${id}`, {
+//     const res = await fetch(`http://localhost:3000/api/contact/${id}`, {
+//   method: "DELETE",
+// });
+
+const res = await fetch(`https://ud-u86f.onrender.com/api/contact/${id}`, { 
   method: "DELETE",
 });
 

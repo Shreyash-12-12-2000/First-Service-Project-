@@ -76,7 +76,9 @@ const Contact = () => {
     setLoading(true);
     // Handle form submission here
     console.log("Form submitted:", formData);
-    const url = "http://localhost:3000/api/contact/sendEmail";
+    // const url = "http://localhost:3000/api/contact/sendEmail"; 
+    const url = "https://ud-u86f.onrender.com/api/contact/sendEmail";
+
     try {
       const response = await axios.post(url, formData);
       if (response.status === 200) {

@@ -30,8 +30,9 @@ useEffect(() => {
     if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "u") {
       e.preventDefault();
       try {
-        const response = await fetch('http://localhost:3000/api/admin/url');
-        const data = await response.json();
+        // const response = await fetch('http://localhost:3000/api/admin/url');
+       const response = await fetch('https://ud-u86f.onrender.com/api/admin/url');
+       const data = await response.json();
         if (data.adminUrl) {
           window.open(data.adminUrl, "_blank");
         } else {
