@@ -44,7 +44,7 @@ const handleDelete = async (id: string) => {
 const res = await fetch(`https://ud-u86f.onrender.com/api/contact/${id}`, { 
   method: "DELETE",
 });
-
+  
 
     if (!res.ok) {
       throw new Error("Failed to delete");
