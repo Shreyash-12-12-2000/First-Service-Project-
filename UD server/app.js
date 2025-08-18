@@ -1,28 +1,27 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
-const userRoutes = require('./routes/user.routes');
 const cors = require('cors');
+
+// Routes
+const userRoutes = require('./routes/user.routes');
 const contactEmailRoutes = require('./routes/contactEmail.routes');
 const adminRoutes = require('./routes/admin.routes');
-const connectDB = require('./config/db');
-const { connect } = require('mongoose');
 
-connectDB()
+// DB Connection
+const connectDB = require('./config/db');
+connectDB();
 
 const app = express();
 
-app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.use(cors({
+// ✅ CORS Setup
+const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = [
       "http://localhost:5173",
       "http://localhost:8080",
-      "https://umbrelladesk.netlify.app", // 👈 Add
-      "https://udadmin.netlify.app", // 👈 Add
+      "https://umbrelladesk.netlify.app",
+      "https://udadmin.netlify.app",
       "https://umbrelladesk.com",
     ];
     if (!origin || allowedOrigins.includes(origin)) {
@@ -31,16 +30,27 @@ app.use(cors({
       callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true
-}));
+  credentials: true,
+};
 
+// ✅ Use CORS Middleware
+app.use(cors(corsOptions));
+
+// ✅ Handle Preflight (OPTIONS) Requests
+app.options('*', cors(corsOptions));
+
+// ✅ Body & Cookie Parsers
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// ✅ Routes
 app.use('/api/contact', contactEmailRoutes);
 app.use('/api/auth', userRoutes);
-
 app.use('/api/admin', adminRoutes);
 
-
-
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${process.env.PORT}`);
+// ✅ Start Server (with PORT fallback)
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
