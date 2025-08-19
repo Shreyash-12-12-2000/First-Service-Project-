@@ -67,10 +67,7 @@ const Careers = () => {
 
   return (
     <div className="min-h-screen pt-16">
-  
-      <section className="py-20 bg-gradient-to-br from-background via-secondary/20 to-accent/10 relative overflow-hidden">
-
-      <div
+       <div
     className="absolute left-0 right-0 top-0 pointer-events-none"
     style={{
       top:28,
@@ -79,10 +76,12 @@ const Careers = () => {
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center center',
       backgroundSize: 'cover',
-      opacity:0.2,
+      opacity:0.6,
       zIndex: 0,
     }}
   />
+  
+      <section className="py-20 bg-gradient-to-br from-background via-secondary/20 to-accent/10 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}

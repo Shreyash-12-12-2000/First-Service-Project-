@@ -1,9 +1,10 @@
 import axios from 'axios';
 
 const api = axios.create({
-  // baseURL: 'http://localhost:3000/api',
-   baseURL: 'https://ud-u86f.onrender.com/api', // ✅ Use your backend http 
-   withCredentials: true
+  baseURL: import.meta.env.VITE_API_URL,
+  withCredentials: true
 });
 
 export default api;
+
+// 'http://localhost:3000/api',

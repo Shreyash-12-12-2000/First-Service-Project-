@@ -41,10 +41,12 @@ const handleDelete = async (id: string) => {
 //   method: "DELETE",
 // });
 
-const res = await fetch(`https://ud-u86f.onrender.com/api/contact/${id}`, { 
+const res = await fetch(`${import.meta.env.VITE_API_URL}/contact/${id}`, {
   method: "DELETE",
+  credentials: "include"
 });
-  
+
+
 
     if (!res.ok) {
       throw new Error("Failed to delete");

@@ -23,3 +23,27 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Build output
+dist/
+build/
+
+# Vite cache
+.vite/
+
+# Netlify
+.netlify/
+
+# Render or other deployment config
+render.yaml

@@ -109,9 +109,7 @@ const partnerLogos = [
 
   return (
    <div className="min-h-screen overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-secondary/20 to-accent/10 pt-16">
-      <video
+     <video
   autoPlay
   muted
   loop
@@ -122,7 +120,8 @@ const partnerLogos = [
     <source src="bg7.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
-  
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-secondary/20 to-accent/10 pt-16">
  {/* <div style={{ overflowX: 'hidden' }}>
   <div
     style={{
@@ -155,9 +154,9 @@ const partnerLogos = [
               <span className="text-accent block">Solutions</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Empowering businesses with comprehensive IT services, digital
-              marketing, HR solutions, and advanced automation to drive growth
-              and success.
+              Empowering businesses with comprehensive Software services, Digital
+              Marketing, HR & Recruitment and  Financial Advisor Services to Drive 
+              Growth and Success..
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
