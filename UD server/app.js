@@ -23,8 +23,7 @@ app.use(cors({
       "http://localhost:8080",
       "https://umbrelladesk.netlify.app",
       "https://umbrelladesk.com",
-      "https://udadmin.netlify.app",
-
+      "https://udadmin.netlify.app"
     ];
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
@@ -37,7 +36,6 @@ app.use(cors({
 
 app.use('/api/contact', contactEmailRoutes);
 app.use('/api/auth', userRoutes);
-
 app.use('/api/admin', adminRoutes);
 
 

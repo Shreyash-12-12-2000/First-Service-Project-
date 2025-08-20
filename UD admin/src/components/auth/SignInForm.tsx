@@ -28,33 +28,22 @@ export default function SignInForm() {
       return;
     }
 
-try {
-  const response = await api.post("/auth/login", { email, password });
-
-  if (response.status === 200) {
-    const token = response.data.token;
-
-    if (!token) {
-      toast.error("No token received from server.");
+    try {
+      const response = await api.post("/auth/login", { email, password });
+      if (response.status === 200) {
+        toast.success("User signed in successfully");
+        navigate("/");
+        setLoading(false);
+      } else {
+        toast.error("Failed to sign in");
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error("Error during sign in:", error);
+      toast.error("Please check your Email and Password.");
       setLoading(false);
-      return;
     }
-
-    // ✅ Store token in localStorage
-    localStorage.setItem("token", token);
-
-    toast.success("User signed in successfully");
-    navigate("/");
-
-  } else {
-    toast.error("Failed to sign in");
-  }
-
-} catch (error) {
-  console.error("Error during sign in:", error);
-  toast.error("Please check your Email and Password.");
-}
-};
+  };
 
   return (
     <div className="flex flex-col flex-1">
