@@ -37,15 +37,9 @@ const handleDelete = async (id: string) => {
   if (!confirmDelete) return;
 
   try {
-//     const res = await fetch(`http://localhost:3000/api/contact/${id}`, {
-//   method: "DELETE",
-// });
-
-const res = await fetch(`${import.meta.env.VITE_API_URL}/contact/${id}`, {
+    const res = await fetch(`http://localhost:3000/api/contact/${id}`, {
   method: "DELETE",
-  credentials: "include"
 });
-
 
 
     if (!res.ok) {
