@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000/api',
-   withCredentials: true
+  baseURL: 'https://ud-u86f.onrender.com/api',  // ✅ Use your deployed backend URL
+  withCredentials: true
 });
+
 
 export default api;
