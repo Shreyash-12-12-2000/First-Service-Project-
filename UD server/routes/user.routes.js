@@ -49,12 +49,10 @@ router.post(
     if (!user) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
+
     const isPasswordValid = await bcrypt.compare(password, user.password);
-    
     if (!isPasswordValid) {
-      return res
-        .status(400)
-        .json({ message: "Invalid email or password" });
+      return res.status(400).json({ message: "Invalid email or password" });
     }
 
     const token = jwt.sign(
@@ -64,12 +62,20 @@ router.post(
         expiresIn: "12h",
       }
     );
-
+// ✅ Send token in cookie (optional)
     res.cookie("token", token, {
       maxAge: 12 * 60 * 60 * 1000, // 12 hours
+      httpOnly: true,
+      sameSite: "None", // If frontend is hosted on different origin
+      secure: true,     // Required for cross-site cookies
     });
 
-    res.status(200).json({ message: "Login successful" });
+    
+   // ✅ Send token in response body (required by your frontend)
+    res.status(200).json({
+      message: "Login successful",
+      token: token, // ✅ This line is the fix
+    });
   }
 );
 
