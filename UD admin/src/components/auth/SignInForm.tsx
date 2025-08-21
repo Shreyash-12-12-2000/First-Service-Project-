@@ -29,7 +29,7 @@ export default function SignInForm() {
     }
 
     try {
- const response = await api.post("/auth/login", { email, password }, { withCredentials: true });
+      const response = await api.post("/auth/login", { email, password });
       if (response.status === 200) {
         toast.success("User signed in successfully");
         navigate("/");
