@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   MapPin,
@@ -20,9 +21,7 @@ import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 
 const Careers = () => {
-
-  const openPositions = []
-  
+  const [openPositions, setOpenPositions] = useState([]);
 
   const benefits = [
     {
@@ -64,23 +63,37 @@ const Careers = () => {
     }
   };
 
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/api/jobs");
+        const data = await res.json();
+        setOpenPositions(data);
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+      }
+    };
+
+    fetchJobs();
+  }, []);
 
   return (
     <div className="min-h-screen pt-16">
-       <div
-    className="absolute left-0 right-0 top-0 pointer-events-none"
-    style={{
-      top:28,
-      height: '400px',  // Set height as you want
-      backgroundImage: 'url("bg.jpg")',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center center',
-      backgroundSize: 'cover',
-      opacity:0.6,
-      zIndex: 0,
-    }}
-  />
-  
+      <div
+        className="absolute left-0 right-0 top-0 pointer-events-none"
+        style={{
+          top: 28,
+          height: "400px",
+          backgroundImage: 'url("bg.jpg")',
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center center",
+          backgroundSize: "cover",
+          opacity: 0.6,
+          zIndex: 0,
+        }}
+      />
+
+      {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-secondary/20 to-accent/10 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
@@ -94,15 +107,16 @@ const Careers = () => {
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8">
               Build your career with a company that values innovation, growth,
-              and making a meaningful impact. Discover opportunities to work
-              with cutting-edge technology and talented professionals.
+              and making a meaningful impact.
             </p>
             <Button
               asChild
               size="lg"
               className="bg-accent hover:bg-accent/90 text-accent-foreground"
             >
-              <Link to={"/careers#positions"} onClick={() => { window.scrollTo(0, 1117); }} >View Open Positions</Link>
+              <Link to={"/careers#positions"} onClick={() => window.scrollTo(0, 1117)}>
+                View Open Positions
+              </Link>
             </Button>
           </motion.div>
         </div>
@@ -122,9 +136,7 @@ const Careers = () => {
               Why Work With Us?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We believe our people are our greatest asset. That's why we've
-              created an environment where talented individuals can thrive and
-              grow.
+              We've created an environment where talented individuals can thrive and grow.
             </p>
           </motion.div>
 
@@ -179,117 +191,95 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* Open Positions */}
-       <section id="positions" className="py-20 bg-muted text-primary-foreground">
-      <div className="container mx-auto px-4">
-        {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            Open Positions
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Explore current opportunities to join our growing team and make an
-            impact.
-          </p>
-        </motion.div>
+      {/* Open Positions Section */}
+      <section id="positions" className="py-20 bg-muted text-primary-foreground">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+              Open Positions
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Explore current opportunities to join our growing team.
+            </p>
+          </motion.div>
 
-        {/* Position Cards Grid */}
-        {openPositions && openPositions.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {openPositions.map((position, index) => (
-              <motion.div
-                key={position.title}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <Card className="h-full shadow-business hover:shadow-accent transition-all duration-300 border border-border hover:border-accent/50">
-                  <CardHeader>
-                    <div className="flex items-start justify-between mb-2">
-                      <div>
-                        <CardTitle className="text-xl text-primary mb-2">
-                          {position.title}
-                        </CardTitle>
-                        <CardDescription className="text-muted-foreground">
-                          {position.department}
-                        </CardDescription>
+          {openPositions.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {openPositions.map((position, index) => (
+                <motion.div
+                  key={position._id}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <Card className="h-full shadow-business hover:shadow-accent transition-all duration-300 border border-border hover:border-accent/50">
+                    <CardHeader>
+                      <div className="flex items-start justify-between mb-2">
+                        <div>
+                          <CardTitle className="text-xl text-primary mb-2">
+                            {position.title}
+                          </CardTitle>
+                          <CardDescription className="text-muted-foreground">
+                            {position.department}
+                          </CardDescription>
+                        </div>
+                        <Badge className={getLevelColor(position.level)}>
+                          {position.level}
+                        </Badge>
                       </div>
-                      <Badge className={getLevelColor(position.level)}>
-                        {position.level}
-                      </Badge>
-                    </div>
-
-                    <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mt-2">
-                      <div className="flex items-center space-x-1">
-                        <MapPin className="w-4 h-4" />
-                        <span>{position.location}</span>
+                      <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mt-2">
+                        <div className="flex items-center space-x-1">
+                          <MapPin className="w-4 h-4" />
+                          <span>{position.location}</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <Clock className="w-4 h-4" />
+                          <span>{position.type}</span>
+                        </div>
                       </div>
-                      <div className="flex items-center space-x-1">
-                        <Clock className="w-4 h-4" />
-                        <span>{position.type}</span>
-                      </div>
-                    </div>
-                  </CardHeader>
+                    </CardHeader>
 
-                  <CardContent>
-                    <p className="text-muted-foreground mb-4">
-                      {position.description}
-                    </p>
-
-                    {/* Requirements */}
-                    {position.requirements && position.requirements.length > 0 && (
-                      <div className="mb-6">
-                        <h4 className="font-semibold text-primary mb-2">
-                          Requirements:
-                        </h4>
-                        <ul className="space-y-1">
-                          {position.requirements.map((req, idx) => (
-                            <li
-                              key={idx}
-                              className="flex items-center text-sm text-muted-foreground"
-                            >
-                              <div className="w-1.5 h-1.5 bg-accent rounded-full mr-2 flex-shrink-0" />
-                              {req}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
-                      Apply Now
-                    </Button>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-             </div>
+                    <CardContent>
+                      <p className="text-muted-foreground mb-4">
+                        {position.description}
+                      </p>
+                      <Button
+              asChild
+              size="lg"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground"
+            >
+              <Link to="/contact#hr-contact">Apply Now</Link>
+            </Button>
+    
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
           ) : (
-            
-              <div className="h-full w-full flex flex-col items-center justify-center ">
-                <div className="py-11 flex flex-col items-center text-center">
-                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-6">
-                    <HelpCircle className="w-8 h-8 text-gray-500" />
-                  </div>
-                  <div className="text-xl text-gray-500 text-muted-foreground mb-2">
-                    No open positions at the moment
-                  </div>
-                  <div className="text-gray-400 text-sm">
-                    Check back later or send us your resume.
-                  </div>
+            <div className="h-full w-full flex flex-col items-center justify-center">
+              <div className="py-11 flex flex-col items-center text-center">
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                  <HelpCircle className="w-8 h-8 text-gray-500" />
+                </div>
+                <div className="text-xl text-gray-500 text-muted-foreground mb-2">
+                  No open positions at the moment
+                </div>
+                <div className="text-gray-400 text-sm">
+                  Check back later or send us your resume.
                 </div>
               </div>
+            </div>
           )}
-       
-      </div>
-    </section>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-muted text-primary-foreground">
@@ -305,19 +295,15 @@ const Careers = () => {
               Don't See the Right Position?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              We're always looking for talented individuals to join our team.
-              Send us your resume and let us know how you'd like to contribute
-              to our mission.
+              We're always looking for talented individuals. Send us your resume!
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                asChild
-                size="lg"
-                className="bg-accent hover:bg-accent/90 text-accent-foreground"
-              >
-                <Link to="/contact#hr-contact">Send Your Resume</Link>
-              </Button>
-            </div>
+            <Button
+              asChild
+              size="lg"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground"
+            >
+              <Link to="/contact#hr-contact">Send Your Resume</Link>
+            </Button>
           </motion.div>
         </div>
       </section>

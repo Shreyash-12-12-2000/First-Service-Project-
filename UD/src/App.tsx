@@ -15,6 +15,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SmoothScrollProvider from "./components/SmoothScrollProvider";
 import ScrollToTop from "./components/ScrollToTop";
+import { JobProvider } from "./context/JobContext";
+
 
 const queryClient = new QueryClient();
 
@@ -64,7 +66,14 @@ useEffect(() => {
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/services/:slug" element={<ServiceDetail />} />
-              <Route path="/careers" element={<Careers />} />
+              <Route
+                path="/careers"
+                element={
+                  <JobProvider>
+                    <Careers />
+                  </JobProvider>
+                }
+              />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
